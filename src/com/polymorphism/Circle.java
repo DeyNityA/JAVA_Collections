@@ -4,7 +4,7 @@ public class Circle extends Shapes{
     private  int radius;
 
     public Circle(int radius) {
-        super();
+
         this.radius = radius;
         System.out.println("circle constructor");
     }

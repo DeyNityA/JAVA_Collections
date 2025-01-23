@@ -14,4 +14,8 @@ public class Rectangle extends Shapes{
     public void Area(){
         System.out.println("Area of Rectangle is "+(a*b));
     }
+
+    public static void show(){
+        System.out.println("static method from Rectangle");
+    }
 }
