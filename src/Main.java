@@ -1,18 +1,39 @@
 
+import com.Polymorphism_visibility.College;
+import com.Polymorphism_visibility.Private_clg;
 import com.nitya.Palindrome;
 import com.Inherit.*;
 import com.polymorphism.*;
 import com.AbstractDemo.*;
 import com.polymorphism2.*;
-import com.upcasting_downcasting.* ;
+import com.upcasting_downcasting.A;
 import com.Inner_class.*;
 import com.Abstract_Anonymous.*;
 import com.Interfaces.*;
 import com.Functional_interface.*;
 import com.generic_class.*;
 import com.generic_method.*;
+import com.Polymorphism_visibility.*;
+import com.upcasting_downcasting.B;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Objects;
 
 public class Main {
+
+    public static College2 exp(College2 c){
+        return c;
+    }
+
+    public static College2 exp2(Private_clg2 c){
+       c.greet_private();
+        return c;
+    }
+    public static Private_clg2  exp3(College2 c){
+        return (Private_clg2)c;
+    }
 
     // create a class Student
     static class Student {
@@ -93,29 +114,67 @@ public class Main {
 
         //Polymorphism
         //Compile time Polymorphism===method overloading
+        Adv_cal c1=new Adv_cal();
+        System.out.println(c1.add(6,7,8));
+
         //Runtime Polymorphism===overriding
+        Shapes spp = new Shapes();
         Shapes sp1= new Circle(6);
         Shapes sp2= new Rectangle(7,5);
         Square sq1= new Square(5);
         System.out.println(sp1.toString());
+        System.out.println(sp1.getClass());
+        System.out.println(sp1.getClass()== spp.getClass());
+        System.out.println(sq1 instanceof Shapes);
         sp2.Area();
         sp1.Area();
         sq1.Area();
-        Adv_cal c1=new Adv_cal();
-        System.out.println(c1.add(6,7,8));
         //Actually it's calling Shapes ka Area method, but internally it's executing the Circle one at runtime,
         // it's because of overriding
         //overriding can't be done in instance variable
-        //overriding can't be done on static method but it can be inherited
+        //overriding can't be done on static method but it can be inherited, but redeclaring a static method
+        //with the same signature in the subclass creates a new method that hides the superclass method
+        sp2.show();
+        Circle cr1= new Circle(6);
+        Circle.show();
+        cr1.show();
+        Rectangle r1= new Rectangle(6,8);
+        r1.show();
+        Rectangle.show();
+
+        //we can increase the visibility of the access modifier in child class
+        College clg= new Private_clg();
+        //clg.Infa(); it's overriden but we can't access for it's access specifier
+        Private_clg pv_clg= new Private_clg();
+        pv_clg.Infa();
+
+        College2 clg2= new Private_clg2();
+        clg2.Infa();
+        //at the time of overriding we can change the type of method, but type should be subclass of the parent
+        //class method type
+        Private_clg2 pv_clg2= new Private_clg2();
+        exp(pv_clg2).greet();
+        exp(pv_clg2).Infa();
+        exp2(pv_clg2).greet();
+        exp(pv_clg2).Infa();
+        //exp3(new College2()).greet_private();
+        //exp3(new College2()).greet();
+        //exp3(new College2()).Infa(); ---class College2 cannot be cast to class Private_clg2
+
+
+
+
+
 
         //Final keyword, for variable use as const, for class it can't be inherited, for method it can't be override
 
-        //upcasting and downcasting\
-        A a= new B();
-        System.out.println(a.getClass());
-        a.methodA();
+        //upcasting and downcasting
+        A aaa= new B
+                ();
+        System.out.println(aaa.getClass());
+        aaa.methodA();
         //a.methodB(); //this will give error
-        B b= (B)a;
+        B b= (B)aaa;
         b.methodA();
         b.methodB();
 
@@ -179,6 +238,8 @@ public class Main {
         h_a.fly();
         h_a.animalSound();
         h_a.sleep();
+        h_a.show();
+
         Pro_animal p_a= new Pro_animal() {
             @Override
             public void jump() {
@@ -204,6 +265,8 @@ public class Main {
         p_a.jump();
         p_a.animalSound();
         p_a.run();
+        p_a.show();
+
 
         //Functional interfaces
         F_i add_2_nos= new F_i() {
@@ -226,6 +289,8 @@ public class Main {
         g.show(6.7,"gyt",9.56f,23);
         //g.show2("fgrgr",9,8.7f,7.899);  //will give error
         String st="bjhui";
+
+
 
 
 

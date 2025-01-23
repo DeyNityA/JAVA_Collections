@@ -7,4 +7,7 @@ public class Shapes {
     public void Area(){
         System.out.println("The area is from Shapes");
     }
+    public static void show(){
+        System.out.println("static method from Shapes");
+    }
 }

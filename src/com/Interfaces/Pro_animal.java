@@ -1,5 +1,11 @@
 package com.Interfaces;
 
 public interface Pro_animal extends Animal{
-    public void jump();
+    void jump();
+
+    @Override
+    default void show(){
+     System.out.println("Chaa mudao");
+    }
+
 }
