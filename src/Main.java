@@ -13,13 +13,10 @@ import com.Interfaces.*;
 import com.Functional_interface.*;
 import com.generic_class.*;
 import com.generic_method.*;
-import com.Polymorphism_visibility.*;
+
 import com.upcasting_downcasting.B;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Objects;
+
 
 public class Main {
 
